@@ -1,0 +1,35 @@
+{
+  "name": "agent-on-the-fly",
+  "version": "0.0.1",
+  "description": "A proactive, self-improving multi-agent SDLC companion. Pre-push risk analysis, AI-powered QA, and ML/LLM lifecycle management — built on the Claude Agent SDK.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sdlc",
+    "multi-agent",
+    "devops",
+    "ai-qa",
+    "mlops",
+    "llmops",
+    "claude-agent-sdk"
+  ],
+  "author": "Hieu Trung Dao <hieutrungdao.cs@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hieutrungdao/agent-on-the-fly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hieutrungdao/agent-on-the-fly/issues"
+  },
+  "homepage": "https://github.com/hieutrungdao/agent-on-the-fly#readme",
+  "type": "commonjs",
+  "dependencies": {
+    "bmad-method": "^6.3.0"
+  }
+}
