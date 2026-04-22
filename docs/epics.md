@@ -1,12 +1,42 @@
 # Agent On the Fly — Epic Breakdown
 
+> ## ⚠️ SCOPE-SHIFTED — REGENERATION REQUIRED
+>
+> **This document is OUT OF DATE against canonical [PRD v2.0](./PRD.md) (restored 2026-04-19).**
+>
+> This epic backlog was built against the narrower 69-FR Python-only scope (PRD v1.1, now deprecated). On 2026-04-19 the PRD was reconciled to its 99-FR Party-Mode scope. The following **critical coverage gaps** exist in this v1.1 breakdown:
+>
+> | PRD v2.0 scope | Covered in v1.1 epics? |
+> |---|---|
+> | FR-71–FR-75 — AI QA Agent (autonomous browser-driven, self-healing selectors, user-bug-report → regression test) | ❌ Missing — Epic 9 only covers YAML-based E2E |
+> | FR-105 — Action-tier reversibility taxonomy (`READ`/`DRAFT`/`PROPOSE`/`EXECUTE_REVERSIBLE`/`EXECUTE_IRREVERSIBLE`) | ❌ Missing — foundational cross-cutting concern |
+> | FR-106 — Production consent token with WebAuthn attestation | ❌ Missing |
+> | FR-14 + J11 — Pre-push git hook + pre-push risk assessment | ❌ Missing (J11 Proactive Pre-Push Prevention journey absent) |
+> | Telegram / claude-bridge integration (J1, J2, J6, J7, J8) | ❌ Missing — Epic 5 covers Console/Slack/Teams/Email only |
+> | claude-bridge Goal Loop (J7) — multi-attempt remediation with worktree isolation + CI feedback | ❌ Missing |
+> | AOTF MCP server (localhost-bound, auth-token-gated `fix` tool calls) | ❌ Missing |
+> | Rust + TypeScript/Bun stack (Ratatui TUI, cargo+bun pipelines, Rust orchestrator FFI) | ❌ Every story assumes Python |
+> | Strengthened FR-66 — audit log with approver/timestamp/reason (min 20 chars) + token hash + WebAuthn assertion hash on `EXECUTE_IRREVERSIBLE` | ⚠ Partial (Story 6.7 covers schema but not WebAuthn-hash field) |
+> | Multi-language fix engine (TS/JS, Python, Go, Rust, Java/Kotlin, Ruby from v1.0) | ❌ Missing |
+>
+> **Additionally, the pre-existing V-1 sequencing defect is unchanged:** Story 4.7 (Git Failure Mode Handling) is needed throughout Epic 3's Auto-Fix Safety stories (3.11–3.13) but is scheduled later. See [`_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-19.md`](../_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-19.md) §5.
+>
+> **Estimated regeneration delta:** ~30-40 new stories (~150-200 additional points) for the missing scope; stack retargeting touches all 75 existing stories; Epic 7 should split per readiness report §5.1.
+>
+> **Next step:** invoke `bmad-create-epics-and-stories` skill in a fresh session **after** architecture has been regenerated against PRD v2.0. Do not attempt sprint planning from this breakdown until regenerated.
+>
+> *(Scope-shift banner added 2026-04-19 during PRD v1.1 → v2.0 reconciliation.)*
+
+---
+
 **Author:** hieutrungdao
-**Date:** 2026-04-13
-**Version:** 1.1
-**Status:** Draft
+**Date:** 2026-04-13 (body); scope-shift banner added 2026-04-19
+**Version:** 1.1 (body) — **DEPRECATED pending regeneration to v2.0**
+**Status:** Draft — OUT OF DATE
 
 ### Changelog
 
+- **1.2 (2026-04-19)** — Scope-shift banner added enumerating the 10+ PRD v2.0 features not covered in this v1.1 breakdown. Body unchanged; no stories added/removed. Regeneration required.
 - **1.1 (2026-04-13)** — Aligned with Architecture v1.1 and PRD v1.1: added stories for Plugin Security (Epic 1), Polling Watcher abstraction (Epic 2), CLIAgentBackendBase + Context Window Management + Auto-Fix Safety Model (Epic 3), Git Failure Mode Handling (Epic 4), token-based multi-user dashboard auth + audit log (Epic 6), Codex CLI / OpenCode CLI agent backends + polling watcher implementations (Epic 7). Updated story points and FR Coverage Verification.
 - **1.0 (2026-04-04)** — Initial draft.
 

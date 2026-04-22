@@ -1,15 +1,37 @@
 # UX Research Inputs — AOTF
 
+> ## ℹ️ STATUS UPDATE 2026-04-19 — content now redundant with canonical PRD
+>
+> On 2026-04-19 the canonical [PRD.md](./PRD.md) was restored to its 99-FR Party-Mode scope (v2.0), which **already contains** all three blocks extracted into this file:
+>
+> - §1 User Journeys → PRD v2.0 §5 (Journeys 1–12 + edge-case stubs + journey summary)
+> - §2 Domain-Specific Requirements → PRD v2.0 §6 (code safety, decision logging, security, privacy, worktree isolation, OSS trust model, integration constraints, risks)
+> - §3 Developer Tool + CLI — Specific Requirements → PRD v2.0 §8 (command structure, exit codes, finding schema, output formats, telemetry, config schema, watch pipeline, plugin API, language matrix, install methods)
+>
+> The FR-reference numbers in this file (FR-05, FR-14, FR-49, FR-66, FR-68, FR-71–FR-75, FR-105, FR-106, NFR-D01) **now resolve correctly** against PRD v2.0. No renumbering needed.
+>
+> **This file is preserved as a historical extraction artifact.** If you want the authoritative current spec, read [PRD.md](./PRD.md). If you want to understand why this file was created (the 2026-04-18 PRD narrowing and its 2026-04-19 reversal), see:
+>
+> - [`_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-17.md`](../_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-17.md) — readiness check recommending 99-FR scope
+> - [`_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-19.md`](../_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-19.md) — readiness check that discovered the scope fork
+> - [`_bmad-output/planning-artifacts/prd.md`](../_bmad-output/planning-artifacts/prd.md) — the recovered source file (identical to current `docs/PRD.md` body)
+>
+> *(Redundancy banner added during PRD v1.1 → v2.0 reconciliation.)*
+
+---
+
+**Original header (preserved for provenance):**
+
 **Purpose:** Source material for the UX design workflow. Preserves the high-value
 persona journeys, CLI contract, and domain-specific constraints that were developed
 during initial planning but condensed out of the canonical [PRD.md](./PRD.md).
 
-**Status:** Reference / input document. Not a spec. Where content here conflicts
-with [PRD.md](./PRD.md), the PRD is canonical.
+**Status:** ~~Reference / input document. Not a spec. Where content here conflicts
+with [PRD.md](./PRD.md), the PRD is canonical.~~ → **As of 2026-04-19: historical artifact. PRD v2.0 contains the authoritative copy.**
 
 **Provenance:** Extracted on 2026-04-18 from the legacy draft PRD
-(`_bmad-output/planning-artifacts/prd.md`, 1,433 lines) before that file was
-removed. The extract covers three blocks: User Journeys (§1), Domain-Specific
+(`_bmad-output/planning-artifacts/prd.md`, 1,433 lines) ~~before that file was
+removed~~ **— that file has since been recovered (2026-04-19) and its content re-adopted as the canonical PRD v2.0**. The extract covers three blocks: User Journeys (§1), Domain-Specific
 Requirements (§2), and Developer Tool + CLI — Specific Requirements (§3).
 
 ---

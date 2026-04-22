@@ -1,12 +1,39 @@
 # Agent On the Fly — Architecture Document
 
+> ## ⚠️ SCOPE-SHIFTED — REGENERATION REQUIRED
+>
+> **This document is OUT OF DATE against canonical [PRD v2.0](./PRD.md) (restored 2026-04-19).**
+>
+> This architecture was written against the narrower 69-FR **Python-only** scope (PRD v1.1, now deprecated). On 2026-04-19 the PRD was reconciled to its 99-FR Party-Mode scope, which materially changes the technical foundation:
+>
+> | Dimension | This doc (v1.1) describes | Canonical PRD v2.0 requires |
+> |---|---|---|
+> | Implementation stack | Python 3.10+ (Click, Rich, FastAPI, Pydantic v2, SQLite) | **Rust + TypeScript/Bun** (Ratatui TUI, cargo+bun pipelines, Rust orchestrator FFI, TS SDK, Unix-socket JSON-RPC, Cargo.lock, SLSA provenance) |
+> | Notification surface | Console / Slack / Teams / Email | **+ claude-bridge Telegram adapter** (bidirectional approve/reject/view-diff via bot) |
+> | Plugin enforcement | Import-hook advisory | **+ seccomp-bpf on Linux; advisory+import-hook on macOS; Rust FFI tier enforcement (NFR-S10)** |
+> | Auto-fix safety | Five-gate model (FR-57-61) | **+ Action-tier taxonomy (FR-105) + production consent token w/ WebAuthn attestation (FR-106)** |
+> | Pre-push surface | Not covered | **Pre-push git hook + risk assessment (FR-14, J11)** |
+> | Multi-attempt remediation | Not covered | **claude-bridge Goal Loop with worktree isolation + CI feedback + cost ceilings (J7)** |
+> | QA surface | YAML-based E2E (FR-42-45) | **AI QA Agent (FR-71-75): autonomous browser-driven, self-healing selectors, user-bug-report → regression test** |
+> | External interface | CLI + HTMX dashboard | **+ AOTF MCP server (localhost-bound, auth-token-gated `fix` tool calls)** |
+> | Language support | Python host; watcher language-agnostic | **Host language-agnostic watcher; fix engine covers TS/JS, Python, Go, Rust, Java/Kotlin, Ruby from v1.0** |
+>
+> **Status:** Architecture regeneration is a documented 2-day exercise per `_bmad-output/planning-artifacts/implementation-readiness-report-2026-04-17.md`. Until regenerated, the body below describes a valid *Python subset* of the canonical scope — useful as a reference but **not implementable against PRD v2.0 as-is**.
+>
+> **Next step:** invoke `bmad-create-architecture` skill in a fresh session against the restored PRD v2.0 and the architectural constraints surfaced in `docs/ux-research-inputs.md` §3 (Plugin API Surface, Language & Stack Matrix, Installation Methods, Integration Constraints).
+>
+> *(Scope-shift banner added 2026-04-19 during PRD v1.1 → v2.0 reconciliation.)*
+
+---
+
 **Author:** hieutrungdao
-**Date:** 2026-04-13
-**Version:** 1.1
-**Status:** Draft
+**Date:** 2026-04-13 (body); scope-shift banner added 2026-04-19
+**Version:** 1.1 (body) — **DEPRECATED pending regeneration to v2.0**
+**Status:** Draft — OUT OF DATE
 
 ### Changelog
 
+- **1.2 (2026-04-19)** — Scope-shift banner added. Body unchanged; no architectural decisions modified. Regeneration required against PRD v2.0.
 - **1.1 (2026-04-13)** — Adversarial review revisions: introduced `CLIAgentBackendBase` to support Claude Code, Codex CLI, and OpenCode as first-class backends; split watchers into streaming and polling abstractions to support Grafana/Loki/Datadog; added Auto-Fix Safety Model (approval gates, dry-run, scope limits, rollback, fix concurrency control); added Plugin Security model (allowlist + checksum + capability scoping); replaced single-password dashboard auth with token-based multi-user + audit log; fixed flow diagram to branch event bus to storage and notify-with-rate-limit independently; added Context Window Management strategy; added Git Failure Mode Handling.
 - **1.0 (2026-04-04)** — Initial draft.
 
