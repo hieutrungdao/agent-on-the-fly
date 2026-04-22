@@ -14,8 +14,18 @@ researchCount: 2
 brainstormingCount: 2
 projectDocsCount: 3
 workflowType: 'prd'
-lastEdited: '2026-04-17'
+lastEdited: '2026-04-19'
 editHistory:
+  - date: '2026-04-19'
+    source: 'bmad-edit-prd workflow + Party Mode (John/Winston/Amelia/Mary) — pre-architecture cleanup'
+    changes: >
+      Resolved 3 open decisions from prd-review-2026-04-19.md.
+      D-1 (C-2 gate model): hybrid "seven-control trust surface" in pitch (five pipeline gates + two cross-cutting controls — Audit, Consent Token), 5+2 typing preserved in architecture. Rewrote Innovation claim #4 + §5 policy matrix; fixed NFR-S04 pipeline-gate range to FR-23-27 (was wrongly FR-23-35).
+      D-2 (M-1 MCP): read-only MCP in v1.0. FR-65 rewritten — tools: get_risk_score, get_finding, list_recent_runs, get_daemon_status. No mutation in v1.0. NFR-S07 updated for read-scope tokens. Exec summary qualified. Write-capable MCP deferred to v1.1 pending design-partner validation.
+      D-3 (M-5 FR-105 mechanism): softened. FR-105 rewritten with invariant ACs (AC.1-AC.5); file paths (plugin_bridge.rs, tier_map.rs) removed from PRD — mechanism moves to architecture + ADRs. NFR-S10 rewritten with invariant "memory-safe, capability-bounded core whose failure domain is isolated from the orchestrator"; specific mechanism is architectural choice. Core scope test: "if this code is wrong, can reversible escalate to irreversible without authorization?"
+      Additional pre-architecture items (M-2/M-3/M-4/M-6/m-3/m-5): FR-107 added (three-token-model unification with AuthTypeMismatch enforcement, Telegram ACL clarification). Weekly Active Teams operational definition added (team identity = SHA-256(remote URL + config hash), active = ≥1 of 5 loop actions in 7d, telemetry opt-in with disclosed coverage share). FR-53 per-channel bidirectional specification (Slack/PagerDuty/Teams = bidirectional; Email = output-only). Growth Command Surface subsection added to §8 (aotf ml/qa/simulate/agent phase-gated; aotf consent issue is MVP for J11+FR-106). FR Phase Summary table added: 81 MVP / 20 Growth / 6 Vision / 107 total. FR-18 cross-reference to §6 confidence formula.
+      Deferred: C-1 strict section-monotonic FR renumber — held until after architecture regeneration to minimize cross-artifact churn (ux-research-inputs, readiness reports, upcoming architecture + epics).
+      Net: +1 FR (107 total), ~4 NFRs expanded, 0 FRs removed. PRD ready for bmad-create-architecture.
   - date: '2026-04-17'
     source: 'bmad-edit-prd workflow + Party Mode (Mary/John/Winston/Amelia)'
     changes: >
@@ -42,11 +52,12 @@ classification:
 **Author:** hieutrungdao
 **Date:** 2026-04-16 (Party-Mode edit; restored 2026-04-19)
 
-**Version:** 2.0
-**Status:** Canonical (restored)
+**Version:** 2.0.1
+**Status:** Canonical (pre-architecture cleanup)
 
 ### Changelog
 
+- **2.0.1 (2026-04-19)** — Pre-architecture cleanup. Resolves open decisions from `_bmad-output/planning-artifacts/prd-review-2026-04-19.md` via `bmad-edit-prd` + Party Mode (John/Winston/Amelia/Mary). **Decisions:** D-1 gate model → hybrid "seven-control trust surface" in pitch (five pipeline gates + two cross-cutting controls: Audit, Consent Token) with 5+2 typing in architecture; D-2 MCP scope → **read-only in v1.0** (FR-65 revised: `get_risk_score`, `get_finding`, `list_recent_runs`, `get_daemon_status` only; no mutation), write-capable deferred to v1.1; D-3 FR-105 architecture pre-commit → **softened to invariant-based** (mechanism moves to architecture/ADR; AC.1-AC.5 specify contract; core scope test: "if wrong, can reversible escalate to irreversible?"). **Also:** added FR-107 (three-token-model unification with `AuthTypeMismatch` enforcement), Weekly Active Teams operational definition (team identity = SHA-256(remote URL + config hash); active = ≥1 of 5 loop actions in 7d; telemetry opt-in with disclosed coverage), FR-53 per-channel bidirectional spec (Slack/PagerDuty/Teams/Email), Growth Command Surface subsection (`aotf ml`/`qa`/`simulate`/`agent` phase-gated), `aotf consent issue` added to v1.0 command table (supports J11/FR-106), FR Phase Summary table (**81 MVP / 20 Growth / 6 Vision / 107 total** FRs), FR-18 cross-reference to §6 confidence formula, NFR-S04 pipeline-gate range corrected (FR-23-27, not FR-23-35), NFR-S10 rewritten with invariants instead of file paths. **Deferred:** C-1 strict section-monotonic FR renumber — held until after architecture regeneration to minimize cross-artifact doc churn (ux-research-inputs, readiness reports, upcoming architecture + epics). Net delta: +1 FR (107 total), ~4 NFRs expanded, no FRs removed. PRD ready for `bmad-create-architecture`.
 - **2.0 (2026-04-19)** — Scope reconciliation. Restored from recovered legacy draft (`_bmad-output/planning-artifacts/prd.md`, 1,433 lines, Party-Mode edit 2026-04-17 by Mary/John/Winston/Amelia). Reverses the 2026-04-18 narrowing (commit `95aa4b0`) in response to the Apr-17 readiness recommendation to regenerate architecture + epics from this PRD. Introduces **106 FRs** (was 69 in v1.1) across 15 categories, **41 NFRs** (was 12) across 7 categories, 12 user journeys, 12 TS criteria, Rust+TS/Bun stack, AOTF MCP server, claude-bridge Telegram adapter, action-tier reversibility taxonomy (FR-105), production consent token with WebAuthn (FR-106), AI QA Agent pillar (FR-71–FR-75), AI Agent Operations pillar (FR-76–FR-80), pre-push risk assessment (FR-14). **Architecture v1.1 and Epics v1.1 are now out-of-date** against this PRD and require regeneration — see scope-shift banners at the top of each. Pre-architecture cleanup (C-1 FR renumber, C-2 five-vs-seven gate, M-1–M-6 scope clarifications) tracked in [`_bmad-output/planning-artifacts/prd-review-2026-04-19.md`](../_bmad-output/planning-artifacts/prd-review-2026-04-19.md); address via `bmad-edit-prd` before `bmad-create-architecture`.
 - **1.1 (2026-04-13) — DEPRECATED** — Narrowed scope removed here. See `_bmad-output/planning-artifacts/prd.md` recovery header for provenance; that copy of the legacy is now this file.
 - **1.0 (2026-04-04)** — Initial draft.
@@ -78,7 +89,7 @@ These layers require 5–10 separate tools (Sentry, Datadog, Langfuse, Arize, ML
 - **MLOps / LLMOps engineers** stitching together siloed tools to manage model and prompt lifecycles
 - **Engineering managers** who need a unified view of SDLC health across code, agents, and models
 
-**Architecture:** Rust binary CLI + TypeScript/Bun agent layer. Single static binary (`brew install aotf`). **CLI-agent-first AI backends:** Claude Code CLI (v1.0 default), Codex CLI, Gemini CLI — all subprocess-wrapped with no framework SDK dependency. Local-model backends (Ollama, llama.cpp) on the roadmap. Interface-agnostic: CLI, MCP server, Telegram (v1.0); WebUI, TUI (Growth).
+**Architecture:** Rust binary CLI + TypeScript/Bun agent layer. Single static binary (`brew install aotf`). **CLI-agent-first AI backends:** Claude Code CLI (v1.0 default), Codex CLI, Gemini CLI — all subprocess-wrapped with no framework SDK dependency. Local-model backends (Ollama, llama.cpp) on the roadmap. Interface-agnostic: CLI, **MCP server (read-only, v1.0)**, Telegram (v1.0); WebUI, TUI (Growth). Write-capable MCP surface deferred to v1.1 pending design-partner validation — see FR-65 rationale.
 
 **Cloud dependency disclosure:** AOTF itself has no hosted service dependency — all state, findings, and learning remain on the user's machine. AI diagnosis and fix generation route through the user's configured AI CLI, which does transmit code to that provider (e.g., Anthropic for Claude Code CLI). Local-model backends (Growth roadmap) close this loop fully for air-gapped use.
 
@@ -116,6 +127,13 @@ No open-source tool combines all three layers with autonomous remediation. AOTF'
 ## Success Criteria
 
 **North Star Metric: Weekly Active Teams** — the single number that unifies tradeoff decisions. Value compounds at the team level; individual installs are a leading indicator, not the goal.
+
+**Weekly Active Teams — Operational Definition:**
+- **Team identity:** SHA-256 of `(git remote URL + SHA-256 of committed `.aotf/config.yaml`)`. Two repos with identical config are counted as one team; two teams with the same repo but divergent configs are counted separately. This makes "team" a stable, local, privacy-preserving identifier.
+- **Active threshold:** a team is Weekly Active if it performed ≥1 of the following within a trailing 7-day window: finding capture (FR-13), diagnosis (FR-19), fix apply (FR-32), rollback (FR-29), plugin install or trust update (FR-54). Passive watcher runs with zero findings do not count — the metric measures *engagement with the loop*, not daemon uptime.
+- **Counting mechanism:** counted only via opt-in telemetry (NFR-S09 scope: command name + timing + team identity hash). Teams with telemetry disabled are *unmeasured, not assumed inactive* — reporting discloses the opt-in share each week so the published WAT number is transparent about coverage.
+- **Dashboard surface:** admins view their own team's weekly activity via FR-103; aggregate cross-team WAT is reported only to the AOTF project itself, not to individual teams (no leakage of other teams' data).
+
 
 **MTTR Definition:** Throughout this PRD, AOTF's MTTR means *time from first finding detected to fix-PR-merged*. Actual service recovery may include additional deployment or propagation time not attributable to AOTF. Reported MTTR improvements compare to user's opt-in pre-AOTF baseline where available.
 
@@ -737,9 +755,11 @@ Multi-attempt autonomous remediation (worktree isolation per attempt, CI result 
 
 ---
 
-**4. Autonomy UX — Calibrated Trust Architecture**
+**4. Autonomy UX — Calibrated Trust Architecture (Seven-Control Trust Surface)**
 
-AOTF's five-gate *enforcement* model (approval gate, dry-run, scope limiter, mutex, rollback) combined with per-finding confidence scores and an immutable decision log creates a trust ratchet: each successful autonomous fix raises the team's configured confidence threshold. Teams tune the autonomy dial per-service without losing safety guarantees. The gates are the *runtime policy* layer; the action-tier taxonomy (claim #5) is the *type system* that selects which gates fire for which actions.
+AOTF's **seven-control trust surface** combines *five pipeline gates* (Dry-Run, Scope Limit, Approval, Mutex, Rollback — sequential, blocking, per-action) with *two cross-cutting controls* (Audit — append-only observability sink active on every action regardless of outcome; Consent Token — authorization artifact consumed by the Approval gate when action-tier is `EXECUTE_IRREVERSIBLE`). Combined with per-finding confidence scores and an immutable decision log, this creates a trust ratchet: each successful autonomous fix raises the team's configured confidence threshold. Teams tune the autonomy dial per-service without losing safety guarantees.
+
+**Typing:** the five pipeline gates are *runtime policy decision points* that gate whether an action proceeds (pass/fail). The two cross-cutting controls are categorically different: Audit is an observability sink that every gate emits into (a tap on every step, not a step you pass through); Consent Token is an authorization input that the Approval gate consumes when tier demands it (not a peer gate). This typing is the architectural source of truth — the seven-control surface is the enterprise-legible pitch artifact. FR-23 through FR-27 define the five pipeline gates; FR-66 defines Audit; FR-106 defines Consent Token. The action-tier taxonomy (claim #5) is the *type system* that selects which controls fire for which actions.
 
 ---
 
@@ -747,7 +767,7 @@ AOTF's five-gate *enforcement* model (approval gate, dry-run, scope limiter, mut
 
 Every autonomous AOTF operation is classified at dispatch time into one of five **action tiers**: `READ` (safe, audit-only), `DRAFT` (creates artifact, not published), `PROPOSE` (opens PR/suggestion, human reviews), `EXECUTE_REVERSIBLE` (takes action, rollback exists), `EXECUTE_IRREVERSIBLE` (permanent — requires production consent token + audit capture of approver/timestamp/reason). The taxonomy is a *type system* over actions; the five-gate model (claim #4) is the *runtime policy* that consumes tiers and selects the gate matrix per tier.
 
-*Policy matrix (tier → mandatory gates):*
+*Policy matrix (tier → mandatory controls):*
 
 | Tier | Audit | Dry-Run | Scope Limit | Approval Gate | Mutex | Rollback | Consent Token |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -756,6 +776,8 @@ Every autonomous AOTF operation is classified at dispatch time into one of five 
 | PROPOSE | ✓ | ✓ | ✓ | — | — | — | — |
 | EXECUTE_REVERSIBLE | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
 | EXECUTE_IRREVERSIBLE | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | **✓** |
+
+*Column typing (see claim #4 for full treatment):* **Pipeline gates** (5): Dry-Run, Scope Limit, Approval Gate, Mutex, Rollback — sequential blocking decision points per action. **Cross-cutting controls** (2): Audit — append-only observability sink active on every gate regardless of outcome; Consent Token — authorization artifact consumed by the Approval gate for `EXECUTE_IRREVERSIBLE` tier, not a peer gate. The seven-column surface is the enterprise-legible trust artifact; the 5+2 typing is the architectural decomposition (see [architecture.md](./architecture.md) §Trust Boundary).
 
 *Enforcement:* Declaration lives in the plugin capability manifest (`actionTier` field). Enforcement lives in the Rust orchestrator's FFI boundary (`crates/orchestrator/src/plugin_bridge.rs`) — the tier check occurs *before* dispatch, against the signed manifest, regardless of whether the plugin called through the TS SDK or bypassed it. SDK annotations are DX sugar, not the source of truth. The orchestrator owns a versioned tier-classification table (`crates/orchestrator/src/tier_map.rs`) that maps concrete syscalls and tool invocations to tiers — without this table, enforcement would be vacuous.
 
@@ -831,6 +853,7 @@ aotf watch [--source <type>]       # Start daemon, attach log watchers
 aotf diagnose [<finding-id>]       # AI diagnosis; interactive selection if no ID given
 aotf fix [<finding-id>] [--mode <diagnosis_only|fix_and_pr>] [--scope <single|multi>] [--dry-run]
 aotf rollback <finding-id>         # Revert a merged fix
+aotf consent issue --env <e> --scope <s> --ttl <d>  # Issue production-consent token (FR-106, WebAuthn-gated)
 aotf plugin trust <name>           # Verify SHA-256 + add to allowlist
 aotf plugin list                   # List installed plugins with versions + capability grants
 aotf plugin dev --local <path>     # Load unverified local plugin for development (dev mode only)
@@ -854,6 +877,23 @@ aotf dashboard                     # Launch WebUI (Growth, separate workstream)
 **Ergonomics:**
 - `aotf diagnose` and `aotf fix` without an ID: interactive finding selector in terminal; `--latest` semantics in non-interactive/piped context
 - `--help` on every command; `--help --output json` returns machine-readable help schema
+
+**Growth command surface (v0.2 through post-v1.0):**
+
+The following commands appear in user journeys (§5) and are scoped to Growth/Vision phases. They are NOT in v1.0. Journey narratives that use them are aspirational demonstrations of the four-pillar vision; v1.0 delivers Pillar 1 (Proactive DevOps Loop) and a read-only MCP surface.
+
+| Command | Pillar | Phase | Referenced in |
+|---|---|---|---|
+| `aotf qa run` / `aotf qa from-report` | AI QA Agent | Growth (FR-71-75) | J12 |
+| `aotf ml prompt rollback` / `aotf ml drift` | ML/LLM Lifecycle | Vision (FR-85-89) | J5 |
+| `aotf consent issue` | Proactive DevOps Loop (pre-push) | MVP (FR-14, FR-106) | J11 — **included in v1.0 surface** |
+| `aotf simulate` (impact check) | Proactive DevOps Loop | Growth | J8 |
+| `aotf agent run` / `aotf agent baseline` | AI Agent Operations | Growth (FR-76-80) | (Growth journeys) |
+| `aotf dashboard` | — (cross-pillar) | Growth (FR-81-84) | J9, J10 |
+
+**Notes:**
+- `aotf consent issue` is MVP — it supports the pre-push prevention journey (J11) and is required to exercise FR-106 (production consent tokens). It is the one "Growth-looking" command in a v1.0 surface.
+- Phase-gating is enforced by the CLI: unavailable commands print a clear message explaining the phase and where to track progress (e.g., `aotf qa run: available in v0.3+ (AI QA Agent pillar — see roadmap)`).
 
 ---
 
@@ -1235,7 +1275,7 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 ### 3. AI Diagnosis
 
 - **FR-17:** AOTF produces an AI-generated root cause diagnosis for a finding, including confidence score, file attribution, and line reference
-- **FR-18:** AOTF computes a confidence score from static analysis agreement, diff complexity, and test signal — not from AI self-reporting
+- **FR-18:** AOTF computes a confidence score from static analysis agreement, diff complexity, and test signal — not from AI self-reporting. *(Formula, weights, and threshold defined in §6 Autonomous Code Execution Safety.)*
 - **FR-19:** Engineer can request a diagnosis for any finding on demand via CLI
 - **FR-20:** AOTF records a structured decision log entry for every diagnosis including confidence breakdown and AI reasoning trace
 - **FR-21:** Engineer can query the local decision log to review all past diagnosis and fix decisions
@@ -1260,8 +1300,25 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 - **FR-36:** AOTF records the outcome of every autonomous fix action in the decision log
 - **FR-93:** AOTF communicates its operational state explicitly when degraded, blocked by a safety gate, or in fallback mode — not silently degraded
 - **FR-94:** Engineer can reject a proposed fix with optional contextual feedback that is incorporated into a revised fix attempt
-- **FR-105:** AOTF declares an action-tier on every autonomous operation — one of `READ`, `DRAFT`, `PROPOSE`, `EXECUTE_REVERSIBLE`, `EXECUTE_IRREVERSIBLE`. The declared tier is a ceiling: no operation executes at a tier higher than declared in the plugin capability manifest or at the call site. Violations produce a `TierViolation` entry in the audit log, terminate the offending plugin, and are enforced in the Rust orchestrator FFI boundary (`crates/orchestrator/src/plugin_bridge.rs`), not the TypeScript SDK. A versioned tier-classification table (`crates/orchestrator/src/tier_map.rs`) maps concrete syscalls and tool invocations to tiers; the table is part of the orchestrator crate and reviewed like code. Every decision-log entry records the classified tier.
+- **FR-105:** AOTF declares an action-tier on every autonomous operation — one of `READ`, `DRAFT`, `PROPOSE`, `EXECUTE_REVERSIBLE`, `EXECUTE_IRREVERSIBLE`. The declared tier is a ceiling: no operation executes at a tier higher than declared in the plugin capability manifest or at the call site. The contract expresses **invariants**, not mechanism — architecture selects the enforcement implementation (memory-safe capability-bounded core with isolated failure domain; see NFR-S10).
+  - **AC FR-105.1:** No plugin-originating call path can cause an `EXECUTE_IRREVERSIBLE` action to execute without a prior `ALLOW` decision from the tier-policy gate in the same logical transaction.
+  - **AC FR-105.2:** The tier-policy gate state (action → tier mapping, override ledger, consent-token ledger) is not writable from any plugin-reachable code path. Verified by mutation testing: mutating the gate's allow/deny branch MUST cause ≥1 integration test to fail.
+  - **AC FR-105.3:** Violations of FR-105.1 or FR-105.2 detected in CI block merge. CI-detected violations additionally emit a `TierViolation` audit entry and terminate the offending plugin in runtime.
+  - **AC FR-105.4:** Every decision-log entry records the classified tier (`READ` / `DRAFT` / `PROPOSE` / `EXECUTE_REVERSIBLE` / `EXECUTE_IRREVERSIBLE`) alongside the action, actor, and outcome.
+  - **AC FR-105.5:** A versioned action-to-tier classification table is maintained in architecture-defined source locations and reviewed through standard code review (not config). The table is the authoritative mapping; runtime inference from call shape alone is forbidden.
+
+  *Scope boundary for core (applies to NFR-S10 enforcement):* code belongs in the enforcement core iff **"if this code is wrong, a reversible-action tier could escalate to irreversible without authorization."** Code that fails this test belongs outside the core (agent orchestration, QA harness, drift detection, MCP server, notification adapters).
 - **FR-106:** AOTF enforces a production-consent token before any `EXECUTE_IRREVERSIBLE` action targets a production-designated environment. Token properties: single-use, 1-hour TTL, issued per-approver. Token issuance requires a WebAuthn user-presence assertion from a pre-registered operator key; the assertion hash and approver identity are recorded in the audit log alongside the token hash. No assertion → no token → no execution. "Production-designated" is a binary per-environment flag (see NFR); staging-like-prod, canary, and shadow environments are NOT production for token purposes. The `--force-local-auto-approve` flag does NOT bypass FR-106 — irreversible-in-production always requires a consent token.
+- **FR-107:** AOTF uses three **distinct, non-interchangeable** authorization primitives. Each has its own lifecycle, storage, verification, and revocation semantics:
+  - **(a) User access tokens** (FR-49) — role-scoped, long-lived, rotatable, issued by team admin via `aotf user create`, stored as Argon2-hashed records; revocable via `aotf user revoke`
+  - **(b) Production consent tokens** (FR-106) — single-use, 1-hour TTL, WebAuthn-gated, bound to a specific `EXECUTE_IRREVERSIBLE` action and approver identity; consumed once, cannot be re-presented
+  - **(c) MCP invocation tokens** (NFR-S07) — localhost-bound, per-session, read-scope-only in v1.0, issued at MCP client handshake; revoked on session end or daemon restart
+
+  **AC FR-107.1:** Tokens of one type MUST NOT be accepted in place of tokens of another type. Cross-type submission raises `AuthTypeMismatch`, is audit-logged with `(timestamp, submitted_type, expected_type, actor)`, and rate-limits the submitting identity.
+
+  **AC FR-107.2:** No primitive has a superset-of relationship with another. A user access token with `admin` role cannot substitute for a WebAuthn-backed production consent token, even for the same approver identity. A Telegram approval (FR-44) provides audit trail and UX surface but is consumed as an *action on behalf of* an existing user access token — it is not a fourth primitive.
+
+  **AC FR-107.3:** Telegram per-user allowlist (see §6 Security Requirements) is a *channel ACL*, not a token primitive. Approvals arriving via Telegram still verify against the approver's user access token scope (FR-49) for their role, and escalate to WebAuthn consent-token flow (FR-106) for `EXECUTE_IRREVERSIBLE`.
 
 ### 5. Goal Loop & Multi-Attempt Remediation
 
@@ -1285,7 +1342,7 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 - **FR-51:** AOTF produces periodic team digest reports summarizing findings, diagnoses, fix outcomes, and MTTR trends
 - **FR-52:** AOTF tracks an MTTR baseline per team and reports improvement against that baseline
 - **FR-103:** Team admin can view weekly activity metrics for their team scope (findings captured, diagnoses, fixes applied, rollbacks) — the data underlying the North Star metric of Weekly Active Teams
-- **FR-53:** *(Growth)* AOTF supports additional notification channels (Slack, PagerDuty, MS Teams, Email SMTP)
+- **FR-53:** *(Growth)* AOTF supports additional notification channels with per-channel interactivity model: **Slack** (bidirectional via Block Kit interactive components — approve/reject/view-diff inline), **PagerDuty** (bidirectional via acknowledgment callbacks — ack/resolve; diff viewing out-of-band), **MS Teams** (bidirectional via Adaptive Card actions), **Email SMTP** (output-only — no inbound interaction; diff and approval via link-out to dashboard or Telegram). Bidirectional capabilities require a per-channel inbound-webhook surface specified in architecture.
 
 ### 7. Plugin Ecosystem
 
@@ -1305,7 +1362,7 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 - **FR-62:** AOTF validates the configured AI CLI backend version against a declared minimum version on startup and reports incompatibility
 - **FR-63:** AOTF falls back to detection-only mode automatically when the configured AI backend is unavailable
 - **FR-64:** AOTF enforces a configurable ceiling on concurrent AI backend calls to prevent API quota exhaustion
-- **FR-65:** AOTF exposes diagnosis and fix capabilities as MCP tools accessible from MCP-compatible clients
+- **FR-65:** AOTF exposes **read-only** diagnosis and status capabilities as MCP tools accessible from MCP-compatible clients. v1.0 tool set is strictly non-mutating: `get_risk_score(path_or_commit)`, `get_finding(finding_id)`, `list_recent_runs(limit)`, `get_daemon_status()`. **No v1.0 MCP tool may mutate a repository, create/modify/merge a PR, trigger a deploy, apply a fix, or invoke rollback** — these operations route exclusively through the CLI + safety-gate path (FR-23 through FR-27, FR-105, FR-106). Write-capable MCP surface (e.g., `trigger_run`, `approve_fix`, `apply_fix`) is **deferred to v1.1** pending a design-partner integration that validates the threat model (MCP chain-of-authorization is weaker than direct CLI authorization: the developer authorizes AOTF, but an MCP-called AOTF is authorized by the calling agent — an audit chain the developer cannot inspect at invocation time). MCP protocol version supported and lifecycle (bound to `aotf watch` daemon; separate process `aotf mcp-serve` available) specified in architecture
 - **FR-95:** AOTF validates credential health for configured AI backends and notification channels on startup and alerts when credentials are invalid or nearing expiry
 
 ### 9. Observability, Status & Audit
@@ -1361,6 +1418,25 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 
 ---
 
+### FR Phase Summary
+
+| Phase | Count | FR IDs |
+|---|---|---|
+| **MVP (v1.0)** | **81** | FR-01–FR-15, FR-17–FR-21, FR-23–FR-52, FR-54–FR-70, FR-90–FR-97, FR-99, FR-103–FR-107 |
+| **Growth (v0.2–v0.5)** | **20** | FR-16, FR-22, FR-53, FR-71–FR-84, FR-98, FR-100, FR-101 |
+| **Vision (post-v1.0)** | **6** | FR-85–FR-89, FR-102 |
+| **Total** | **107** | — |
+
+*Note on FR numbering:* numbers reflect Party-Mode (2026-04-17) insertion order, not strict section order. Cross-section FR references are stable (FR-N uniquely identifies a requirement) but readers cannot infer scope or section from the FR number. A strict section-monotonic renumber is deferred to post-architecture-regeneration to minimize doc churn across architecture, epics, and external references (ux-research-inputs, readiness reports).
+
+*MVP categories:* Project Initialization & Configuration (10), Log Monitoring & Detection (7), AI Diagnosis (6), Autonomous Fix & Safety (19), Goal Loop (6), Notifications & Team Coordination (11), Plugin Ecosystem (9), AI Backend Management (6), Observability/Audit (7) = **81 MVP FRs**.
+
+*Growth categories:* AI QA Agent (5), AI Agent Operations (5), Dashboard (5), Security Automation (2), plus 3 scattered Growth items = **20 Growth FRs**.
+
+*Vision categories:* ML/LLM Lifecycle Manager (5), Ecosystem (1) = **6 Vision FRs**.
+
+---
+
 ## Non-Functional Requirements
 
 *Note: Technical Success Criteria (TS-01 through TS-12) in the Success Criteria section define testable acceptance targets. The NFRs below define the quality attributes and architectural constraints that make those targets achievable. Where overlap exists, the TS-xx metric is the acceptance gate; the NFR is the design constraint.*
@@ -1384,13 +1460,13 @@ Proactive DevOps Loop including pre-push risk assessment (FR-05 + FR-14, support
 | **NFR-S01** | All secrets (API keys, tokens) stored in OS-native credential storage (macOS Keychain, Linux libsecret) or an encrypted secrets-management store (e.g., SOPS) for headless/CI environments; never written to disk in plaintext or logged | Supply chain attacks target credential files |
 | **NFR-S02** | No plugin code executes before SHA-256 checksum verification; 100% enforcement, zero silent loads | Plugin ecosystem is the highest supply-chain risk surface |
 | **NFR-S03** | No code content transmitted to AI backend without per-repo explicit consent stored in `.aotf/consent.yaml` | Data sovereignty requirement for enterprise users |
-| **NFR-S04** | All AOTF autonomous actions pass configured safety gates before execution; gates are not bypassable via config except explicit `--force-local-auto-approve`. The force flag bypasses the five enforcement gates (FR-23 through FR-35) but NEVER bypasses the FR-105 action-tier ceiling or the FR-106 production consent token requirement for `EXECUTE_IRREVERSIBLE` actions | Trust requires non-bypassable safety rail; irreversible action always requires tier + consent enforcement regardless of flag routes |
+| **NFR-S04** | All AOTF autonomous actions pass the configured control surface before execution; controls are not bypassable via config except the explicit `--force-local-auto-approve` flag. The force flag bypasses the **five pipeline gates (FR-23 through FR-27:** Dry-Run, Scope Limit, Approval, Mutex, Rollback) for low-friction local use, but NEVER bypasses: (i) the FR-66 Audit cross-cutting control, (ii) the FR-105 action-tier ceiling, or (iii) the FR-106 production consent token requirement for `EXECUTE_IRREVERSIBLE` actions. Audit is non-bypassable by design (it is a tap on every action, not a gate); tier and consent enforcement are non-bypassable for irreversibility-class actions regardless of flag routes | Trust requires non-bypassable safety rail; irreversible action and audit logging always hold regardless of flag routes. Aligns with seven-control trust surface (five gates + two cross-cutting controls) per Innovation claim #4. |
 | **NFR-S05** | GitHub webhook payloads validated via HMAC-SHA256; unsigned payloads rejected | Prevents webhook injection |
 | **NFR-S06** | Audit log is append-only; AOTF itself cannot delete or modify past entries | Tamper-evidence for compliance |
-| **NFR-S07** | MCP server binds to localhost only by default; `fix` tool requires authorization token to invoke | Prevents unauthorized remote fix execution |
+| **NFR-S07** | MCP server binds to localhost only by default. v1.0 tool set is strictly read-only (see FR-65) — no MCP tool may mutate state, so no `fix` tool exists to authorize in v1.0. **MCP invocation tokens** (scoped per-session, localhost-bound) authorize *read* access; invalid or missing tokens produce `McpAuthRequired` error, logged and rate-limited. Write-capable MCP tools in v1.1+ will require a distinct write-scope token and pass through the same action-tier enforcement (FR-105) as CLI-originated operations | Read-only surface reduces v1.0 threat surface to info-disclosure; write authorization is additive in v1.1 after design-partner validation |
 | **NFR-S08** | Plugin capability violations logged within 100ms of detection; on Linux enforced via seccomp-bpf; on macOS enforced at import-hook level | Defense-in-depth for plugin sandbox |
 | **NFR-S09** | No PII (code snippet content, error message text) appears in telemetry payloads; telemetry contains only command names, timing, OS/arch | Privacy-first telemetry by design |
-| **NFR-S10** | The action-tier taxonomy (FR-105) is enforced at the Rust orchestrator FFI boundary (`crates/orchestrator/src/plugin_bridge.rs`) against the signed plugin manifest — not at the TypeScript/Bun SDK layer and not by convention. Bypassing the TS SDK must NOT bypass enforcement. A mutation test is required: deleting the tier-check invocation in `plugin_bridge.rs` must cause the integration suite to turn red. Plugins with a missing `actionTier` field in their capability manifest are rejected at plugin-trust time from v1.1+; v1.0.x accepts missing `actionTier` as implicit `UNKNOWN` mapped to `READ`, with a deprecation warning | Enforcement "by convention" collapses to trust-the-plugin, which defeats the taxonomy. The Rust FFI is the only trust boundary plugins cannot cross silently |
+| **NFR-S10** | The action-tier taxonomy (FR-105) is enforced in a **memory-safe, capability-bounded core whose failure domain is isolated from the orchestrator** — not at the SDK/adapter layer and not by convention. The specific mechanism (Rust FFI, seccomp-bound subprocess, WASM sandbox with capability imports, or equivalent) is an architectural decision (see [architecture.md](./architecture.md) §Trust Boundary and its ADRs). Invariants that MUST hold regardless of mechanism: (i) the enforcement core's tier-policy state is not writable from any plugin-reachable code path (FR-105.2); (ii) bypassing any SDK/adapter layer MUST NOT bypass enforcement; (iii) a mutation test is required — mutating the gate's allow/deny branch MUST cause ≥1 integration test to fail (FR-105.2 verification). Plugins with a missing `actionTier` field in their capability manifest are rejected at plugin-trust time from v1.1+; v1.0.x accepts missing `actionTier` as implicit `UNKNOWN` mapped to `READ` with deprecation warning. **Core scope test:** code belongs in the enforcement core iff *"if this code is wrong, a reversible-action tier can escalate to irreversible without authorization."* Code that fails this test belongs outside the core | Enforcement "by convention" collapses to trust-the-plugin. The architect selects the strongest boundary available to the platform; the PRD specifies the invariant the boundary must uphold, not the mechanism |
 | **NFR-S11** | "Production-designated" (for FR-106 consent-token gating) is a strictly binary per-environment flag in the AOTF config. Environments not explicitly designated `production: true` are NOT production for token purposes — this includes staging, canary, shadow, production-like, and ephemeral preview environments, regardless of name or similarity to production | Without a binary designation, blast-radius creep collapses consent-token security: engineers build token-vending services to handle frequent "production-like" runs and the token becomes ceremonial |
 
 ### Reliability
