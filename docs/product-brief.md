@@ -1,6 +1,20 @@
 # Product Brief: Agent On the Fly (AOTF)
 
-**Date:** 2026-04-04
+> ## ℹ️ HISTORICAL CONCEPT BRIEF — see [PRD v2.0](./PRD.md) for current spec
+>
+> This brief was written **2026-04-04** as the initial product concept. Since then:
+>
+> - The product evolved into a **four-pillar vision** (added AI QA Agent, Authorized Pre-Production Autonomy, claude-bridge Telegram adapter, AOTF MCP server) during Party-Mode refinement 2026-04-17.
+> - The **implementation stack changed from Python → Rust + TypeScript/Bun** (brew/curl single-binary installer, Ratatui TUI, cargo+bun pipelines). The "extracted from xMainframe Python CI/CD system" lineage below describes the *core engine patterns* (regex watcher, rate limiting, notification dispatch), not the production language choice.
+> - MVP scope now includes features this brief listed as Growth/Vision: `full_auto` fix mode (gated by five-gate Auto-Fix Safety + action-tier taxonomy), pre-push risk assessment, multi-language fix engine (TS/JS/Python/Go/Rust/Java-Kotlin/Ruby from v1.0).
+>
+> The vision, problem statement, competitive analysis, target users, and success metrics below **remain valid**. The "In Scope" / "Out of Scope" / "Technical Foundation" sections are **out of date** — refer to [PRD.md](./PRD.md) §4 (Product Scope), §9 (Project Scoping & Phased Development), §8 (Developer Tool + CLI Specific Requirements) for the current breakdown.
+>
+> *(Forward-pointer banner added 2026-04-19 during PRD v1.1 → v2.0 reconciliation.)*
+
+---
+
+**Date:** 2026-04-04 (concept brief); banner added 2026-04-19
 **Author:** hieutrungdao
 **Context:** Open-Source Developer Tools / AI-Powered DevOps
 

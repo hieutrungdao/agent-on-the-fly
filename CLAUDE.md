@@ -8,11 +8,12 @@ Behavioral guidelines for Claude working in this repository. Adapted from [forre
 
 Agent on the Fly (AOTF) is a pre-alpha, open-source (Apache-2.0) multi-agent SDLC companion built on the Claude Agent SDK. The repo currently holds planning artifacts — PRD, architecture, epics, product-brief — and **no runnable code yet**. Canonical product thinking lives in [`docs/`](./docs).
 
-Every scope decision should anchor to one of three pillars:
+Every scope decision should anchor to one of four pillars:
 
 1. **Proactive DevOps Loop** — pre-push simulation, risk scoring, auto-fix PRs
 2. **AI QA Agent** — LLM + Playwright + Chrome DevTools for autonomous exploration
 3. **ML/LLM Lifecycle Manager** — git-native versioning, drift detection, closed-loop retraining
+4. **AI Agent Operations** — agent run tracking, behavior logging, deviation detection, cost tracking, shadow pipelines
 
 Work outside the pillars belongs in an issue, not a PR.
 
