@@ -50,7 +50,9 @@ works end-to-end.
   Linux x86_64 build that publishes the binaries and `install.sh` to the
   GitHub Release.
 - **Install script** (`scripts/install.sh`) — `curl | sh`-friendly
-  Linux/macOS x86_64 installer that drops `aotf` into `~/.local/bin`.
+  Linux x86_64 installer that drops `aotf` into `~/.local/bin`. macOS and
+  aarch64 are not yet supported; the script exits with an error on those
+  platforms.
 
 ### Walking-skeleton policy
 

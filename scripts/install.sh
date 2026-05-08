@@ -62,6 +62,14 @@ echo "downloading aotf-$asset_suffix..."
 download "aotf-$asset_suffix" "$tmp/aotf"
 download "aotfd-$asset_suffix" "$tmp/aotfd"
 download "aotf-gatekeeper-$asset_suffix" "$tmp/aotf-gatekeeper"
+download "SHA256SUMS" "$tmp/SHA256SUMS"
+
+echo "verifying checksums..."
+# Filter to only the three binaries we downloaded.
+grep -E " (aotf|aotfd|aotf-gatekeeper)-$asset_suffix$" "$tmp/SHA256SUMS" \
+  | sed "s| \(.*\)-$asset_suffix$| $tmp/\1|" \
+  | sha256sum --check --status \
+  || { echo "aotf install: checksum mismatch — aborting" >&2; exit 1; }
 
 chmod +x "$tmp/aotf" "$tmp/aotfd" "$tmp/aotf-gatekeeper"
 
