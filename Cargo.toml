@@ -22,7 +22,7 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 anyhow = "1"
 thiserror = "1"
-ts-rs = { version = "10", features = ["serde-compat"] }
+ts-rs = { version = "10", features = ["serde-compat", "serde-json-impl", "uuid-impl"] }
 insta = { version = "1", features = ["json"] }
 tempfile = "3"
 uuid = { version = "1", features = ["v7", "serde"] }

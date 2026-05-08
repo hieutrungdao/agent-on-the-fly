@@ -1,0 +1,15 @@
+{
+  "id": "01940000-abcd-7def-89ab-cdef01234567",
+  "tier": "EXECUTE_REVERSIBLE",
+  "source": "FILE_TAIL",
+  "summary": "auto-fix branch opened for null-deref in user_service.rs:142",
+  "payload": {
+    "file": "src/user_service.rs",
+    "line": 142,
+    "errorKind": "NullPointer",
+    "stack": ["frame_a", "frame_b"]
+  },
+  "createdAtMicros": 1746720000000000,
+  "lamport": 7,
+  "confidence": 0.85
+}

@@ -57,3 +57,8 @@ target/
 # Turborepo
 .turbo/
 
+# ts-rs per-crate scratch output (canonical TS bindings live in
+# packages/aotf-agent/src/generated/, written by gen_ts_types in Story 3)
+crates/*/bindings/
+
+
