@@ -1,0 +1,12 @@
+# cargo-mutants config for aotf-gatekeeper.
+#
+# Mutation testing of the gate functions is the FR-105.2 / NFR-S10
+# requirement. Walking skeleton ships this file as a marker; the actual
+# weekly run is wired in v0.0.3 (per plan deferred-items list).
+#
+# When enabled, the run targets the per-tier gate functions in src/gate.rs
+# so that any mutation of an allow/deny branch fails a corresponding test.
+examine_globs = [
+    "src/gate.rs",
+    "src/tier_map.rs",
+]
