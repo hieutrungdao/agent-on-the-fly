@@ -1,0 +1,12 @@
+# Workspace-level cargo configuration.
+#
+# `TS_RS_EXPORT_DIR` controls where `#[derive(TS)] #[ts(export)]` types are
+# written. We point it at the Bun agent package so generated bindings land in
+# the canonical location used by `packages/aotf-agent/src/generated/`. CI gates
+# on `git diff --exit-code` against this directory; any drift means a wire
+# change was made without regenerating.
+#
+# `relative = true` makes the path relative to this config.toml's directory
+# (the workspace root).
+[env]
+TS_RS_EXPORT_DIR = { value = "packages/aotf-agent/src/generated", relative = true }

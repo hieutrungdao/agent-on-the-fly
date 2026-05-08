@@ -1,0 +1,29 @@
+[package]
+name = "aotf-gatekeeper"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "AOTF safety gatekeeper: enforces ActionTier policy before any action."
+
+[[bin]]
+name = "aotf-gatekeeper"
+path = "src/main.rs"
+
+[dependencies]
+aotf-core-types = { workspace = true }
+aotf-ipc-protocol = { workspace = true }
+aotf-storage = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+clap = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

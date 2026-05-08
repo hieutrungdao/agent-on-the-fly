@@ -39,3 +39,26 @@ _bmad-output/
 
 # Claude Code local state
 .claude/
+
+# Rust / Cargo
+target/
+**/*.rs.bk
+
+# SQLite local artifacts (test runs, dev daemon state)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# AOTF in-repo runtime state
+.aotf/
+.aotf-watch/
+
+# Turborepo
+.turbo/
+
+# ts-rs per-crate scratch output (canonical TS bindings live in
+# packages/aotf-agent/src/generated/, written by gen_ts_types in Story 3)
+crates/*/bindings/
+
+

@@ -1,0 +1,56 @@
+name: release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: 1
+
+jobs:
+  build-linux-x86_64:
+    name: build linux x86_64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build release binaries
+        run: |
+          cargo build --release \
+            --bin aotf --bin aotfd --bin aotf-gatekeeper
+
+      - name: Stage artifacts
+        run: |
+          mkdir -p dist
+          cp target/release/aotf dist/aotf-linux-x86_64
+          cp target/release/aotfd dist/aotfd-linux-x86_64
+          cp target/release/aotf-gatekeeper dist/aotf-gatekeeper-linux-x86_64
+          cp scripts/install.sh dist/install.sh
+          cp CHANGELOG.md dist/CHANGELOG.md
+          (cd dist && sha256sum aotf-linux-x86_64 aotfd-linux-x86_64 \
+            aotf-gatekeeper-linux-x86_64 install.sh > SHA256SUMS)
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }} — Walking Skeleton
+          body_path: CHANGELOG.md
+          prerelease: true
+          fail_on_unmatched_files: true
+          files: |
+            dist/aotf-linux-x86_64
+            dist/aotfd-linux-x86_64
+            dist/aotf-gatekeeper-linux-x86_64
+            dist/install.sh
+            dist/CHANGELOG.md
+            dist/SHA256SUMS

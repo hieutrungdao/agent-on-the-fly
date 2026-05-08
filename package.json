@@ -1,13 +1,14 @@
 {
   "name": "agent-on-the-fly",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.1",
   "description": "A proactive, self-improving multi-agent SDLC companion. Pre-push risk analysis, AI-powered QA, and ML/LLM lifecycle management — built on the Claude Agent SDK.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bun test --cwd packages/aotf-agent",
+    "build": "bun run --cwd packages/aotf-agent build"
   },
   "keywords": [
     "sdlc",
@@ -28,8 +29,10 @@
     "url": "https://github.com/hieutrungdao/agent-on-the-fly/issues"
   },
   "homepage": "https://github.com/hieutrungdao/agent-on-the-fly#readme",
-  "type": "commonjs",
   "dependencies": {
     "bmad-method": "^6.3.0"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0"
   }
 }

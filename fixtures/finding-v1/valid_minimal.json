@@ -1,0 +1,10 @@
+{
+  "id": "01940000-1234-7000-8000-000000000abc",
+  "tier": "DRAFT",
+  "source": "MANUAL",
+  "summary": "minimal",
+  "payload": null,
+  "createdAtMicros": 0,
+  "lamport": 0,
+  "confidence": 0.0
+}

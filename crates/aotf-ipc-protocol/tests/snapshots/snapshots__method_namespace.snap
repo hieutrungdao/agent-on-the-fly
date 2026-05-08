@@ -1,0 +1,12 @@
+---
+source: crates/aotf-ipc-protocol/tests/snapshots.rs
+assertion_line: 14
+expression: "methods::ALL"
+---
+[
+  "daemon.ping",
+  "finding.emit",
+  "audit.append",
+  "audit.list",
+  "gate.evaluate"
+]

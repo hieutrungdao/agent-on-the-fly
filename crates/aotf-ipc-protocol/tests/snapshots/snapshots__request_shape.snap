@@ -1,0 +1,13 @@
+---
+source: crates/aotf-ipc-protocol/tests/snapshots.rs
+assertion_line: 35
+expression: req
+---
+{
+  "jsonrpc": "2.0",
+  "method": "daemon.ping",
+  "params": {
+    "echo": "snap"
+  },
+  "id": 7
+}

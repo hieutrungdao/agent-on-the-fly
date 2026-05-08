@@ -1,0 +1,12 @@
+---
+source: crates/aotf-ipc-protocol/tests/snapshots.rs
+assertion_line: 41
+expression: resp
+---
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "pong": true
+  },
+  "id": 7
+}

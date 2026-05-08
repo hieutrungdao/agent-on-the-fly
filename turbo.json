@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "cargo:build": {
+      "outputs": ["target/**"],
+      "inputs": ["crates/**", "Cargo.toml", "Cargo.lock"]
+    },
+    "cargo:test": {
+      "dependsOn": ["cargo:build"],
+      "inputs": ["crates/**", "Cargo.toml", "Cargo.lock", "fixtures/**"]
+    },
+    "cargo:clippy": {
+      "inputs": ["crates/**", "Cargo.toml", "Cargo.lock"]
+    },
+    "bun:build": {
+      "outputs": ["packages/*/dist/**"],
+      "inputs": ["packages/**/*.ts", "packages/**/package.json", "packages/**/tsconfig.json"]
+    },
+    "bun:test": {
+      "dependsOn": ["bun:build"],
+      "inputs": ["packages/**/*.ts", "packages/**/package.json"]
+    },
+    "build": {
+      "dependsOn": ["cargo:build", "bun:build"]
+    },
+    "test": {
+      "dependsOn": ["cargo:test", "bun:test"]
+    }
+  }
+}
