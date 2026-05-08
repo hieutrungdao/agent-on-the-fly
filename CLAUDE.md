@@ -6,7 +6,7 @@ Behavioral guidelines for Claude working in this repository. Adapted from [forre
 
 ## Project Context
 
-Agent on the Fly (AOTF) is a pre-alpha, open-source (Apache-2.0) multi-agent SDLC companion built on the Claude Agent SDK. The repo currently holds planning artifacts — PRD, architecture, epics, product-brief — and **no runnable code yet**. Canonical product thinking lives in [`docs/`](./docs).
+Agent on the Fly (AOTF) is a pre-alpha, open-source (Apache-2.0) multi-agent SDLC companion built on the Claude Agent SDK. The v0.0.2-alpha.1 walking skeleton ships runnable code (8-crate Rust workspace + Bun agent) proving the file-watch → gate → audit-log path; the four product pillars are not yet implemented. Canonical product thinking lives in [`docs/`](./docs).
 
 Every scope decision should anchor to one of four pillars:
 

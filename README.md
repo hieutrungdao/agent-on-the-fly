@@ -9,19 +9,20 @@
 
 ## Project Status
 
-**Pre-alpha — research and planning phase.** This repository currently contains the product brief, PRD, architecture, and epics. Runnable code has not yet landed. If you're looking to try AOTF, watch/star the repo and check back once the MVP milestone closes. If you're interested in shaping the design, feedback on the docs is extremely welcome.
+**Pre-alpha — walking-skeleton phase.** The v0.0.2-alpha.1 release ships the first runnable code: an 8-crate Rust workspace + Bun agent proving the file-watch → finding → gate → audit-log path end-to-end. The four product pillars and the full MVP scope are not yet implemented. If you're interested in shaping the design, feedback on the docs is extremely welcome.
 
-See [`docs/`](./docs) for the current product thinking.
+See [`docs/`](./docs) for the current product thinking and [`CHANGELOG.md`](./CHANGELOG.md) for what's in each release.
 
 ## What It Is
 
 AOTF applies software engineering rigor to both code *and* ML/LLM artifacts across the full SDLC. Instead of a chatbot that answers questions, it's a background orchestrator that spawns specialized sub-agents to catch problems before they ship.
 
-### Three Core Pillars
+### Four Core Pillars
 
 1. **Proactive DevOps Loop** — Pre-push simulation, risk scoring, auto-fix PRs, smart CI that focuses test effort where risk is highest.
 2. **AI QA Agent** — LLM + Playwright + Chrome DevTools for autonomous exploration, bug narration, self-healing tests, and automated bug tracing.
 3. **ML/LLM Lifecycle Manager** — Git-native model versioning (Git LFS + DVC), drift detection, closed-loop retraining, and prompt-engineering rigor (versioning, A/B testing, injection firewall).
+4. **AI Agent Operations** — Agent run tracking, behavior logging, deviation detection, cost tracking, and shadow pipelines.
 
 ### Why This, Why Now
 
@@ -58,13 +59,14 @@ Tracking in [`docs/epics.md`](./docs/epics.md).
 
 ## Getting Involved
 
-Because the code isn't written yet, the highest-leverage contribution right now is **feedback on the planning docs**:
+The walking skeleton (v0.0.2-alpha.1) is runnable — see `scripts/install.sh` or `cargo build`. The highest-leverage contributions right now are:
 
-- Open an issue with comments on the PRD, architecture, or epic scope
-- Challenge the three-pillar framing — is anything missing, or over-scoped for v0.1?
+- Feedback on the planning docs (PRD, architecture, epic scope)
+- Challenge the four-pillar framing — is anything missing, or over-scoped for v0.1?
 - Share related prior art (tools that tried this, tools that failed, research papers)
+- Bug reports and review findings against the walking skeleton
 
-Once the MVP skeleton lands, a proper `CONTRIBUTING.md` will be added.
+A proper `CONTRIBUTING.md` will be added before the v0.1 milestone.
 
 ## License
 
