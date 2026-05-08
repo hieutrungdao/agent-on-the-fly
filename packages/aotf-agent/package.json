@@ -1,0 +1,21 @@
+{
+  "name": "@aotf/agent",
+  "version": "0.0.2-alpha.1",
+  "description": "AOTF agent layer (Bun + TypeScript): Claude Agent SDK integration, IPC client.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "bun test",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "latest",
+    "@modelcontextprotocol/sdk": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/bun": "latest"
+  }
+}

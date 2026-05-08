@@ -1,0 +1,19 @@
+[package]
+name = "aotf-ipc-protocol"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "JSON-RPC 2.0 wire format and Finding v1 envelope for AOTF IPC."
+
+[dependencies]
+aotf-core-types = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+ts-rs = { workspace = true }
+
+[dev-dependencies]
+insta = { workspace = true }

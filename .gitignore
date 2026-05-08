@@ -39,3 +39,21 @@ _bmad-output/
 
 # Claude Code local state
 .claude/
+
+# Rust / Cargo
+target/
+**/*.rs.bk
+
+# SQLite local artifacts (test runs, dev daemon state)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# AOTF in-repo runtime state
+.aotf/
+.aotf-watch/
+
+# Turborepo
+.turbo/
+

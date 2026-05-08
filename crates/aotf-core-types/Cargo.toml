@@ -1,0 +1,18 @@
+[package]
+name = "aotf-core-types"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "Shared domain types for AOTF: ActionTier, Finding v1, Decision."
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+ts-rs = { workspace = true }
+uuid = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]

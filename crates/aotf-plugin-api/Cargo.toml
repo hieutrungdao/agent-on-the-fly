@@ -1,0 +1,11 @@
+[package]
+name = "aotf-plugin-api"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+description = "AOTF plugin API stub (not implemented in walking skeleton)."
+
+[dependencies]
