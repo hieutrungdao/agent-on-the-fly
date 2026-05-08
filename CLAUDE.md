@@ -86,7 +86,14 @@ Full taxonomy and per-finding authorization model: [`docs/architecture.md`](./do
 
 ## Repo Conventions
 
-- **Canonical docs:** [`docs/`](./docs) — keep PRD, architecture, epics, and product-brief in sync with any scope change.
+- **Canonical docs (read these first; update on scope changes):**
+  - [`docs/PRD.md`](./docs/PRD.md) — canonical product spec (v2.0.1, 107 FRs / 41 NFRs).
+  - [`docs/architecture.md`](./docs/architecture.md) — current architecture, regenerated 2026-04-26 against PRD v2.0.1. Lists `CLAUDE.md` as an input — keep this file consistent with it.
+- **Historical / deprecated docs (read for context, do not edit as if canonical):**
+  - [`docs/epics.md`](./docs/epics.md) — v1.1, scope-shifted; awaits regeneration against PRD v2.0.1.
+  - [`docs/product-brief.md`](./docs/product-brief.md) — 2026-04-04 concept brief; vision intact, scope outdated.
+  - [`docs/ux-research-inputs.md`](./docs/ux-research-inputs.md) — preserved historical extraction; PRD §5/§6/§8 supersede.
+- **When docs conflict:** PRD v2.0.1 is canonical. If architecture and PRD disagree, raise it — don't pick silently.
 - **Gitignored (local working state):** `_bmad/`, `_bmad-output/`, `.claude/`, `node_modules/`.
 - **License:** Apache-2.0. New source files should carry the standard Apache header once the codebase lands.
 - **Commits:** Conventional style (`chore:`, `feat:`, `fix:`, `docs:`). Subject short; body explains *why*, not *what*.
