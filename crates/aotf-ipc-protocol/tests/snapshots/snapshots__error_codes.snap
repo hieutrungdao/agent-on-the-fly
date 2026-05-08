@@ -1,0 +1,15 @@
+---
+source: crates/aotf-ipc-protocol/tests/snapshots.rs
+assertion_line: 29
+expression: codes
+---
+{
+  "AUTH_TYPE_MISMATCH": -32002,
+  "GATE_DENY": -32001,
+  "INCOMPLETE_IRREVERSIBLE_RECORD": -32003,
+  "INTERNAL_ERROR": -32603,
+  "INVALID_PARAMS": -32602,
+  "INVALID_REQUEST": -32600,
+  "METHOD_NOT_FOUND": -32601,
+  "PARSE_ERROR": -32700
+}

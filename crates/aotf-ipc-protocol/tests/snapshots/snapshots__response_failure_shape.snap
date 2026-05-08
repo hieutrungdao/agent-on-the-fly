@@ -1,0 +1,16 @@
+---
+source: crates/aotf-ipc-protocol/tests/snapshots.rs
+assertion_line: 49
+expression: resp
+---
+{
+  "jsonrpc": "2.0",
+  "error": {
+    "code": -32601,
+    "message": "no such method",
+    "data": {
+      "hint": "see methods::ALL"
+    }
+  },
+  "id": "req-1"
+}
