@@ -84,9 +84,15 @@ async fn main() -> Result<()> {
 
     tracing::info!("aotfd ready");
 
+    let mut sigterm = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())
+        .context("install SIGTERM handler")?;
+
     tokio::select! {
         _ = tokio::signal::ctrl_c() => {
-            tracing::info!("ctrl-c received, shutting down");
+            tracing::info!("SIGINT received, shutting down");
+        }
+        _ = sigterm.recv() => {
+            tracing::info!("SIGTERM received, shutting down");
         }
         r = gatekeeper.wait() => {
             tracing::warn!(status = ?r, "gatekeeper exited");
